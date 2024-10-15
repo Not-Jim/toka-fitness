@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+
+        <main>
+            {% if name != None %}
+            <h1> Welcome, {{ name }}!</h1> 
+            {% else %}
+            <h1> Welcome!</h1> 
+            {% endif %}
+            <p> This is a contact page for a website.</p>
+        </main>
+    </body>    
+</html>
