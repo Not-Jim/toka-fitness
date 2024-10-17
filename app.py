@@ -71,5 +71,14 @@ def login():
 def aftonsparv():
     return render_template('gnarpy.html', name=session.get('name'))
 
+@app.route('/logout')
+def logout():
+    session['name'] = None
+    return redirect(url_for('home'))
+
+@app.route('/user')
+def user():
+    return render_template('user.html', name=session.get('name'))
+
 if __name__ == '__main__':
     app.run(debug=True)
