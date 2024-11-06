@@ -18,7 +18,7 @@
         width: 100vw;
         text-align: center;
     }
-    div .form-border {
+    .form-border {
         border: thick solid#1f25a5;
         border-radius: 1rem;
         width: auto;
@@ -28,7 +28,7 @@
 </style>
 <h1>Create an Account</h1>
 
-<div class form-border>
+<div class="container border-0">
     <form method="POST" action="{{ url_for('register') }}">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
