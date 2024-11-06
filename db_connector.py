@@ -4,7 +4,7 @@ class database():
 
     def __init__(self):
         # Define our database FlaskPracticeDB.db
-        self.DBname = 'FlaskPracticeDB.db'
+        self.DBname = 'toka_db.db'
 
     def connect(self):
         # Creates our database connection
@@ -37,11 +37,17 @@ class database():
         """
         conn = self.connect()
         cur = conn.cursor()
-        try:
-            cur.execute(command, params)
-            conn.commit()  # Commit the changes
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            conn.rollback()  # Rollback if any error occurs
-        finally:
-            self.disconnect(conn)
+        # try:
+        #     cur.execute(command, params)F
+        #     conn.commit()  # Commit the changes
+        #     result = cur.fetchall()
+        # except Exception as e:
+        #     print(f"An error occurred: {e}")
+        #     conn.rollback()  # Rollback if any error occurs
+        # finally:
+        cur.execute(command, params)
+        conn.commit()
+        result = cur.fetchall()
+        
+        self.disconnect(conn)
+        return result

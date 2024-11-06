@@ -1,9 +1,12 @@
 {% extends "base.html" %}
-{% block title %}About{% endblock %}
+{% block title %}About Us{% endblock %}
 
-        <main>
-            <h1> Welcome, {{ name }}!</h1>
-            <p> This is an about page for a website.</p>
-        </main>
-    </body>    
-</html>
+{% block content %}
+
+<h1>About Our Fitness Company</h1>
+<p>We are dedicated to helping you achieve your fitness goals with personalized training sessions, expert guidance, and
+    a supportive community.</p>
+{% if name %}
+<p>Welcome back, {{ name }}!</p>
+{% endif %}
+{% endblock %}

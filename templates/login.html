@@ -1,11 +1,50 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
+
 {% block content %}
-<h1>Login</h1>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.username.label }} {{ form.username() }}<br>
-    {{ form.password.label }} {{ form.password() }}<br>
-    {{ form.submit() }}
+<style>
+    form {
+        min-width: 400px;
+        position: absolute;
+        text-align: center;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem
+    }
+    h1 {
+        position: absolute;
+        left: 0%;
+        width: 100vw;
+        text-align: center;
+    }
+    .form-border {
+        border: thick solid#1f25a5;
+        border-radius: 1rem;
+        width: auto;
+        height: auto;
+
+    }
+</style>
+<h1>Login to Your Account</h1>
+<form method="POST" action="{{ url_for('login') }}">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary" style="background-color:#1f25a5; border-color:#1f25a5">Login</button>
 </form>
+{% if form.errors %}
+<div class="alert alert-danger mt-3">
+    {% for field, errors in form.errors.items() %}
+    {% for error in errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endif %}
 {% endblock %}

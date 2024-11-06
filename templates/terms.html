@@ -1,14 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Terms{% endblock %}
-{% block content %}
-    
+{% block title %}Terms and Conditions{% endblock %}
 
-<h1> Welcome, {{ name }}!</h1>
-<p> This is a terms page for a website.
-    <p>
-        You may not be here <br>
-        You may not leave <br>
-        <input type="radio" id="agree" name="agree" value="" checked> I Agree
-    </p>
-</p>
+{% block content %}
+
+<h1>Terms and Conditions</h1>
+<p>Please read our terms and conditions carefully before using our services.</p>
+<h2>1. Acceptance of Terms</h2>
+<p>By using our website and services, you agree to comply with our terms and conditions.</p>
+<h2>2. Modifications</h2>
+<p>We may update these terms from time to time. Please check this page regularly.</p>
+{% if name %}
+<p>Welcome back, {{ name }}!</p>
+{% endif %}
 {% endblock %}

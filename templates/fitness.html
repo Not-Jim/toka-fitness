@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if name != None %}
+<h1> Welcome, {{ name }}!</h1>
+{% else %}
+<h1> Welcome!</h1>
+{% endif %}
+<div class="container">
+    <div class="row">
+        {% for row in data %}
+        <div class="col-sm-4">
+            <div class="card" style="width: auto;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">{{ row[0] }}</h4>
+                    <p class="card-body">{{ row[1] }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

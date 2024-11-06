@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-{% block title %}User{% endblock %}
+{% block title %}User Profile{% endblock %}
 
 {% block content %}
-    {% if name != None %}
-        <h1> Welcome, {{ name }}!</h1> 
-    {% else %}
-        <h1> Welcome!</h1> 
-    {% endif %}
-    <p> This is your user page.</p> 
+
+<h1>User Profile</h1>
+<p><strong>Name:</strong> {{ name }}</p>
+<p><strong>Email:</strong> {{ email }}</p>
+{% if name %}
+
+{% endif %}
 {% endblock %}

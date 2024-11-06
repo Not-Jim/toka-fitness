@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Fitness Sessions{% endblock %}
+
+{% block content %}
+
+<h1>Available Fitness Sessions</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Trainer</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Duration</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for session in sessions %}
+        <tr>
+            <td>{{ session[1] }}</td> <!-- Assuming trainer's name is in the second column -->
+            <td>{{ session[2] }}</td> <!-- Date -->
+            <td>{{ session[3] }}</td> <!-- Time -->
+            <td>{{ session[4] }}</td> <!-- Duration -->
+            <td>
+                {% if user_sessions %}
+                <span>Booked</span>
+                {% else %}
+                <a href="{{ url_for('book_session', session_id=session[0]) }}" class="btn btn-primary">Book</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if name %}
+<h2>Your Booked Sessions</h2>
+<ul>
+    {% for user_session in user_sessions %}
+    <li>{{ user_session[1] }} on {{ user_session[2] }} at {{ user_session[3] }}</li> <!-- Display booked session -->
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
