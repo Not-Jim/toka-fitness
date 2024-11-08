@@ -172,6 +172,23 @@
 
     <!-- Main Content Area -->
     <main>
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, msg in messages %}
+        <div id="alert"
+            class="alert alert-dismissible fade show 
+               {% if category == 'danger' %} alert-danger 
+               {% elif category == 'success' %} alert-success 
+               {% else %} alert-info {% endif %}"
+            style="position: fixed; top: 80px; right: 20px; width: 250px; z-index: 1050; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+   
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </main>
 

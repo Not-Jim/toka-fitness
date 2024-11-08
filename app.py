@@ -105,7 +105,13 @@ def login():
 def sessions_page():
     # Fetch available sessions from the database
     sessions = db.queryDB("SELECT * FROM Sessions")
-    return render_template('sessions.html', name=session.get('name'), sessions=sessions)
+    try:
+        bookings = db.queryDB("SELECT session_id FROM Bookings WHERE user_id = ?",[session['user_id']])
+        bookings = [x[0] for x in bookings]
+    except:
+        bookings = []
+    
+    return render_template('sessions.html', name=session.get('name'), sessions=sessions, bookings=bookings)
 
 
 @app.route('/book_session/<int:session_id>')
@@ -120,6 +126,13 @@ def book_session(session_id):
     flash('Please log in to book a session.')
     return redirect(url_for('login'))
 
+@app.route('/unbook_session/<int:session_id>')
+def unbook_session(session_id):
+    user_id = session.get('user_id')
+    db.modifyDB("DELETE FROM Bookings WHERE session_id = ? AND user_id = ?", [session_id, user_id])
+    flash("Session unbooked successfully!")
+    return redirect(url_for('sessions_page'))
+    
 
 @app.route('/logout')
 def logout():
