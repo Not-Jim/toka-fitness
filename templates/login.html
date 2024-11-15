@@ -1,3 +1,4 @@
+<!-- login.html -->
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 
@@ -18,26 +19,28 @@
         width: 100vw;
         text-align: center;
     }
-    .form-border {
-        border: thick solid#1f25a5;
-        border-radius: 1rem;
-        width: auto;
-        height: auto;
 
+    .form-box {
+        top: 40%;
+        left: 50%;
+        border-color: #1f25a5 solid;
     }
 </style>
 <h1>Login to Your Account</h1>
-<form method="POST" action="{{ url_for('login') }}">
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" required>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-    </div>
-    <button type="submit" class="btn btn-primary" style="background-color:#1f25a5; border-color:#1f25a5">Login</button>
-</form>
+<div class="form-box">
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color:#1f25a5; border-color:#1f25a5">Login</button>
+        <br><a href="/register" style="font-size:medium;">Need an account? Register here</a>
+    </form>
+</div>
 {% if form.errors %}
 <div class="alert alert-danger mt-3">
     {% for field, errors in form.errors.items() %}

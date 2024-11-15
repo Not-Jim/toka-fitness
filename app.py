@@ -121,16 +121,16 @@ def book_session(session_id):
         # Update session in the database to assign to the user
         db.modifyDB("INSERT INTO Bookings (user_id, session_id) VALUES (?, ?)", [
                     user_id, session_id])
-        flash('Session booked successfully!')
+        flash('Session booked successfully!', 'success')
         return redirect(url_for('sessions_page'))
-    flash('Please log in to book a session.')
+    flash('Please log in to book a session.', 'info')
     return redirect(url_for('login'))
 
 @app.route('/unbook_session/<int:session_id>')
 def unbook_session(session_id):
     user_id = session.get('user_id')
     db.modifyDB("DELETE FROM Bookings WHERE session_id = ? AND user_id = ?", [session_id, user_id])
-    flash("Session unbooked successfully!")
+    flash("Session unbooked successfully!", 'success')
     return redirect(url_for('sessions_page'))
     
 
@@ -138,7 +138,7 @@ def unbook_session(session_id):
 def logout():
     session.pop('name', None)
     session.pop('user_id', None)
-    flash('You have been logged out.')
+    flash('You have been logged out.', 'info')
     return redirect(url_for('home'))
 
 
