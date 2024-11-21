@@ -1,0 +1,40 @@
+<!-- Sinner Card!!! -->
+<div class="col-md-4">
+    <div class="card text-center">
+        <img src="/static/Hong Lu.png" class="card-img-top" alt="Trainer 3">
+        <div class="card-body">
+            <h5 class="card-title">
+                Hong Lu
+            </h5>
+            <p class="card-text">宝玉亦瑕、 好事多魔.<br>Jade has its flaws, and life its vicissitudes.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Hong LuModal">
+                Read more
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="Hong LuModal" tabindex="-1" aria-labelledby="Hong LuModal"
+                data-bs-backdrop="static" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Hong LuModal">
+                                Hong Lu
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="text-align: left;">
+                            A Sinner who had lived an affluent life before becoming our company's asset. As such, he has
+                            a certain admiration for a free life; but occasionally, he may make ignorant and unsavory
+                            questions in regards to the food cooked by a certain other Sinner or other aspects of the
+                            low-lives' lowly culture. This can cause much irritation for the other Sinners. However, it
+                            is important to note that no sarcastic undertones are contained in his curiosity-driven
+                            inquiries, so it is ill-advised to let them get physical over it.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

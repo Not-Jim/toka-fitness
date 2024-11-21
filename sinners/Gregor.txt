@@ -1,0 +1,41 @@
+<!-- Sinner Card!!! -->
+<div class="col-md-4">
+    <div class="card text-center">
+        <img src="/static/Sinclair.png" class="card-img-top" alt="Trainer 3">
+        <div class="card-body">
+            <h5 class="card-title">
+                Sinclair
+            </h5>
+            <p class="card-text">Als ich aus unruhigen Träumen erwachte, hatte ich mich in ein ungeheures Ungeziefer
+                verwandelt.<br>As I awoke from unsettling dreams, I had transformed into some hideous pest.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SinclairModal">
+                Read more
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="SinclairModal" tabindex="-1" aria-labelledby="SinclairModal"
+                data-bs-backdrop="static" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="SinclairModal">
+                                Sinclair
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="text-align: left;">
+                            You may be disheartened by the defective state of many of your Sinners, but do not worry;
+                            this Sinner is one of the few who can carry out most missions without much complaint. She is
+                            likely to make reasonable judgements, so it is a good idea to start conversations while
+                            looking her way if you're seeking sound advice. However, you mustn't forget: this Sinner has
+                            survived an absurd voyage in a far and wide body of water. Her patience may run deep, but
+                            once you take a wrong turn with her, it will be a difficult task to regain her trust.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

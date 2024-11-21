@@ -3,6 +3,7 @@ from forms import RegisterForm, LoginForm
 from db_connector import database
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_wtf import *
+import datetime
 
 db = database()  # Gets database from db_connector
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def home():
     text_size = session.get('text_size', '100')  # default to 100%
     dark_mode = session.get('dark_mode', False)  # default to light mode
 
-    return render_template('home.html', name=name, data=sessions, text_size=text_size, dark_mode=dark_mode)
+    return render_template('home.html', name=name, data=sessions, text_size=text_size, dark_mode=dark_mode, footer=True)
 
 
 @app.route('/about')
@@ -103,15 +104,17 @@ def login():
 
 @app.route('/sessions')
 def sessions_page():
+    UserID = db.queryDB('SELECT id FROM User WHERE name = ?', [session['name']])[0][0]
     # Fetch available sessions from the database
     sessions = db.queryDB("SELECT * FROM Sessions")
     try:
-        bookings = db.queryDB("SELECT session_id FROM Bookings WHERE user_id = ?",[session['user_id']])
+        bookings = db.queryDB("SELECT session_id FROM Bookings WHERE user_id = ?", [
+                              session['user_id']])
         bookings = [x[0] for x in bookings]
     except:
         bookings = []
-    
-    return render_template('sessions.html', name=session.get('name'), sessions=sessions, bookings=bookings)
+
+    return render_template('sessions.html', name=session.get('name'), sessions=sessions, bookings=bookings, UserID=UserID)
 
 
 @app.route('/book_session/<int:session_id>')
@@ -126,13 +129,27 @@ def book_session(session_id):
     flash('Please log in to book a session.', 'info')
     return redirect(url_for('login'))
 
+
 @app.route('/unbook_session/<int:session_id>')
 def unbook_session(session_id):
     user_id = session.get('user_id')
-    db.modifyDB("DELETE FROM Bookings WHERE session_id = ? AND user_id = ?", [session_id, user_id])
+    db.modifyDB("DELETE FROM Bookings WHERE session_id = ? AND user_id = ?", [
+                session_id, user_id])
     flash("Session unbooked successfully!", 'success')
     return redirect(url_for('sessions_page'))
-    
+
+
+@app.route('/create_session', methods=['POST'])
+def create_session():
+    if request.method == 'POST':
+        trainer = request.form['Trainer']
+        date =datetime.datetime.strptime(request.form['Date'], '%Y-%m-%d').strftime('%d/%m/%Y')
+        time = request.form['Time']
+        duration = request.form['Duration']
+        db.modifyDB('INSERT INTO Sessions (trainer_name, session_date, session_time, duration) VALUES (?, ?, ?, ?)', 
+                    [trainer, date, time, duration])
+    return redirect(url_for('sessions_page'))
+
 
 @app.route('/logout')
 def logout():
@@ -148,7 +165,7 @@ def user_profile():
     if user_id:
         # Fetch user profile data
         user = db.queryDB("SELECT * FROM User WHERE id = ?", [user_id])
-        return render_template('user.html', name=user[0][1], email=user[0][2])
+        return render_template('user.html', name=user[0][1], email=user[0][2], footer=True)
     return redirect(url_for('login'))
 
 

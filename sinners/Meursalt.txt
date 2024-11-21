@@ -1,0 +1,35 @@
+<!-- Sinner Card!!! -->
+<div class="col-md-4">
+    <div class="card text-center">
+        <img src="/static/Meursalt.png" class="card-img-top" alt="Trainer 3">
+        <div class="card-body">
+            <h5 class="card-title">
+                Meursalt
+            </h5>
+            <p class="card-text">Aujourd'hui, j'ai tué maman. Ou peut-être était-ce hier.<br>Today, I killed mother. Or maybe it was yesterday.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MeursaltModal">
+                Read more
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="MeursaltModal" tabindex="-1" aria-labelledby="MeursaltModal" data-bs-backdrop="static"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="MeursaltModal">
+                                Meursalt
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="text-align: left;">
+                            Wants clear and concise commands, requiring no judgement on his part
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
