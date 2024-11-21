@@ -1,117 +1,127 @@
 <!-- home.html -->
-{% extends "base.html" %}
-
-{% block title %}About{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}About{% endblock %} {% block content
+%}
 <style>
-    body {
-        background-color: #dddeee;
-    }
+  body {
+    background-color: #dddeee;
+  }
 
-    .about-section {
-        background-color: #a6abf3;
-        color: #1f25a5;
-        padding: 40px;
-        border-radius: 8px;
-    }
+  .about-section {
+    background-color: #a6abf3;
+    color: #1f25a5;
+    padding: 40px;
+    border-radius: 8px;
+  }
 
-    .about-heading {
-        color: #434ccc;
-    }
+  .about-heading {
+    color: #434ccc;
+  }
 
-    .mission-section {
-        background-color: #f0f2ff;
-        padding: 20px;
-        border-radius: 8px;
-    }
+  .mission-section {
+    background-color: #f0f2ff;
+    padding: 20px;
+    border-radius: 8px;
+  }
 
-    .trainer-cards .card {
-        background-color: #e0e4f7;
-        border: none;
-    }
+  .trainer-cards .card {
+    background-color: #e0e4f7;
+    border: none;
+  }
 
-    .trainer-cards .card h5 {
-        color: #1f25a5;
-    }
+  .trainer-cards .card h5 {
+    color: #1f25a5;
+  }
 
-    .trainer-cards .card p {
-        color: #434ccc;
-    }
+  .trainer-cards .card p {
+    color: #434ccc;
+  }
 </style>
 
 <div class="container mt-0">
-    <section class="about-section text-center">
-        <h1 class="about-heading">Welcome to Toka Fitness!</h1>
-        <p>
-            At Toka Fitness, our mission is simple: to help people reach their fitness goals through personalized,
-            accessible, and engaging sessions.
-            Whether you're a beginner or a seasoned athlete, we provide customized training programs tailored to your
-            specific needs and preferences.
-        </p>
-    </section>
+  <section class="about-section text-center">
+    <h1 class="about-heading">Welcome to Toka Fitness!</h1>
+    <p>
+      At Toka Fitness, our mission is simple: to help people reach their fitness
+      goals through personalized, accessible, and engaging sessions. Whether
+      you're a beginner or a seasoned athlete, we provide customized training
+      programs tailored to your specific needs and preferences.
+    </p>
+  </section>
 
-    <section class="mission-section mt-4">
-        <h2>Our Mission</h2>
-        <p>
-            We believe in the power of fitness to transform lives. Our mission is to create an inclusive environment
-            where everyone feels motivated to improve their health.
-            At Toka Fitness, we provide a range of services designed to fit your unique goals, whether you aim to lose
-            weight, build muscle, or simply improve your overall well-being.
-        </p>
-    </section>
+  <section class="mission-section mt-4">
+    <h2>Our Mission</h2>
+    <p>
+      We believe in the power of fitness to transform lives. Our mission is to
+      create an inclusive environment where everyone feels motivated to improve
+      their health. At Toka Fitness, we provide a range of services designed to
+      fit your unique goals, whether you aim to lose weight, build muscle, or
+      simply improve your overall well-being.
+    </p>
+  </section>
 
-    <section class="trainer-cards mt-3">
-        <h2 class="text-center">Meet Our Trainers</h2>
-        <div class="row mt-4">
-            <!-- Trainer Card 1 -->
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <!-- <img src="/static/trainer1.jpg" class="card-img-top" alt="Trainer 1"> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Alex Turner</h5>
-                        <p class="card-text">Specializes in weight training and nutrition. With over 10 years of
-                            experience, Alex can guide you on your journey to build strength and lead a healthy
-                            lifestyle.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trainer Card 2 -->
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <!-- <img src="/static/trainer2.jpg" class="card-img-top" alt="Trainer 2"> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Jamie Lee</h5>
-                        <p class="card-text">A certified yoga instructor and wellness coach, Jamie helps clients achieve
-                            balance in their mind, body, and soul through guided yoga sessions and mindfulness
-                            practices.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trainer Card 3 -->
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <!-- <img src="/static/trainer3.jpg" class="card-img-top" alt="Trainer 3"> -->
-                    <div class="card-body">
-                        <h5 class="card-title">Chris Walker</h5>
-                        <p class="card-text">With expertise in high-intensity interval training (HIIT) and
-                            cardiovascular workouts, Chris designs fun, engaging sessions that push clients to their
-                            limits and burn calories fast.</p>
-                    </div>
-                </div>
-            </div>
+  <section class="trainer-cards mt-3">
+    <h2 class="text-center">Meet Our Trainers</h2>
+    <div class="row mt-4">
+      <!-- Trainer Card 1 -->
+      <div class="col-md-4">
+        <div class="card text-center">
+          <!-- <img src="/static/trainer1.jpg" class="card-img-top" alt="Trainer 1"> -->
+          <div class="card-body">
+            <h5 class="card-title">Alex Turner</h5>
+            <p class="card-text">
+              Specializes in weight training and nutrition. With over 10 years
+              of experience, Alex can guide you on your journey to build
+              strength and lead a healthy lifestyle.
+            </p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <section class="mt-5 text-center">
-        <h2>Join Us Today!</h2>
-        <p>
-            No matter where you are on your fitness journey, Toka Fitness is here to support you every step of the way.
-            Sign up for one of our sessions and take the first step toward a healthier, stronger you.
-        </p>
-        <a href="/sessions" class="btn" style="background-color:#434ccc; color:white">View Our Sessions</a>
-    </section>
+      <!-- Trainer Card 2 -->
+      <div class="col-md-4">
+        <div class="card text-center">
+          <!-- <img src="/static/trainer2.jpg" class="card-img-top" alt="Trainer 2"> -->
+          <div class="card-body">
+            <h5 class="card-title">Jamie Lee</h5>
+            <p class="card-text">
+              A certified yoga instructor and wellness coach, Jamie helps
+              clients achieve balance in their mind, body, and soul through
+              guided yoga sessions and mindfulness practices.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trainer Card 3 -->
+      <div class="col-md-4">
+        <div class="card text-center">
+          <!-- <img src="/static/trainer3.jpg" class="card-img-top" alt="Trainer 3"> -->
+          <div class="card-body">
+            <h5 class="card-title">Chris Walker</h5>
+            <p class="card-text">
+              With expertise in high-intensity interval training (HIIT) and
+              cardiovascular workouts, Chris designs fun, engaging sessions that
+              push clients to their limits and burn calories fast.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-5 text-center">
+    <h2>Join Us Today!</h2>
+    <p>
+      No matter where you are on your fitness journey, Toka Fitness is here to
+      support you every step of the way. Sign up for one of our sessions and
+      take the first step toward a healthier, stronger you.
+    </p>
+    <a
+      href="/sessions"
+      class="btn"
+      style="background-color: #434ccc; color: white"
+      >View Our Sessions</a
+    >
+  </section>
 </div>
 {% endblock %}

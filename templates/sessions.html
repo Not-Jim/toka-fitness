@@ -1,8 +1,6 @@
 <!-- sessions.html -->
-{% extends "base.html" %}
-{% block title %}Fitness Sessions{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Fitness Sessions{% endblock %} {%
+block content %}
 <!-- <style>
     td {
         display: flex;
@@ -11,113 +9,169 @@
 </style> -->
 <h1>Available Fitness Sessions</h1>
 {% if UserID == 1 %}
-    <button type="button" class="btn create" data-bs-toggle="modal" data-bs-target="#modal"
-        style="background-color:#1f25a5; color: white; position: absolute; top: 6rem; right:2rem">
-        Create Session
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" data-bs-backdrop="static" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modal">
-                        Sinclair
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="text-align: left;">
-                    <form method="POST" action="{{ url_for('create_session') }}">
-                        <div class="mb-3">
-                            <label for="Trainer" class="form-label">Trainer</label>
-                            <select class="form-control" id="Trainer" name="Trainer" required>
-                                <option value="Alex Turner">Alex Turner</option>
-                                <option value="Alex Turner">Alex Turner</option>
-                                <option value="Alex Turner">Alex Turner</option>
-                                <option value="Alex Turner">Alex Turner</option>
-                                <option value="Alex Turner">Alex Turner</option>
-                                <option value="Alex Turner">Alex Turner</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Date" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="Date" name="Date" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Time" class="form-label">Time</label>
-                            <input type="time" class="form-control" id="Time" name="Time" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Duration" class="form-label">Duration</label>
-                            <input type="number" class="form-control" id="Duration" name="Duration" required min="30"
-                                max="120" value="60">
-                        </div>
-                        <button type="submit" class="btn btn-primary"
-                            style="background-color: #1f25a5; border-width: 0px;">Submit</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
+<button
+  type="button"
+  class="btn create"
+  data-bs-toggle="modal"
+  data-bs-target="#modal"
+  style="
+    background-color: #1f25a5;
+    color: white;
+    position: absolute;
+    top: 6rem;
+    right: 2rem;
+  "
+>
+  Create Session
+</button>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="modal"
+  data-bs-backdrop="static"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal">Sinclair</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" style="text-align: left">
+        <form method="POST" action="{{ url_for('create_session') }}">
+          <div class="mb-3">
+            <label for="Trainer" class="form-label">Trainer</label>
+            <select class="form-control" id="Trainer" name="Trainer" required>
+              <option value="Alex Turner">Alex Turner</option>
+              <option value="Alex Turner">Alex Turner</option>
+              <option value="Alex Turner">Alex Turner</option>
+              <option value="Alex Turner">Alex Turner</option>
+              <option value="Alex Turner">Alex Turner</option>
+              <option value="Alex Turner">Alex Turner</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="Date" class="form-label">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="Date"
+              name="Date"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="Time" class="form-label">Time</label>
+            <input
+              type="time"
+              class="form-control"
+              id="Time"
+              name="Time"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="Duration" class="form-label">Duration</label>
+            <input
+              type="number"
+              class="form-control"
+              id="Duration"
+              name="Duration"
+              required
+              min="30"
+              max="120"
+              value="60"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="background-color: #1f25a5; border-width: 0px"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
     </div>
-{% endif %}
-{% if sessions %}
+  </div>
+</div>
+{% endif %} {% if sessions %}
 <table class="table">
-    <thead>
-        <tr>
-            <th>Trainer</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Duration</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for session in sessions %}
-        {% if session[0] not in bookings %}
-        <tr>
-            <td>{{ session[1] }}</td> <!-- Assuming trainer's name is in the second column -->
-            <td>{{ session[2] }}</td> <!-- Date -->
-            <td>{{ session[3] }}</td> <!-- Time -->
-            <td>{{ session[4] }}</td> <!-- Duration -->
-            <td>
-                <a href="{{ url_for('book_session', session_id=session[0]) }}" class="btn btn-primary">Book</a>
-            </td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th>Trainer</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for session in sessions %} {% if session[0] not in bookings %}
+    <tr>
+      <td>{{ session[1] }}</td>
+      <!-- Assuming trainer's name is in the second column -->
+      <td>{{ session[2] }}</td>
+      <!-- Date -->
+      <td>{{ session[3] }}</td>
+      <!-- Time -->
+      <td>{{ session[4] }}</td>
+      <!-- Duration -->
+      <td>
+        <a
+          href="{{ url_for('book_session', session_id=session[0]) }}"
+          class="btn btn-primary"
+          >Book</a
+        >
+      </td>
+    </tr>
+    {% endif %} {% endfor %}
+  </tbody>
 </table>
-{% endif %}
-
-{% if bookings %}
+{% endif %} {% if bookings %}
 <h2>Your Booked Sessions</h2>
 <table class="table">
-    <thead>
-        <tr>
-            <th>Trainer</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Duration</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for session in sessions %}
-        {% if session[0] in bookings %}
-        <tr>
-            <td>{{ session[1] }}</td> <!-- Assuming trainer's name is in the second column -->
-            <td>{{ session[2] }}</td> <!-- Date -->
-            <td>{{ session[3] }}</td> <!-- Time -->
-            <td>{{ session[4] }}</td> <!-- Duration -->
-            <td>
-                <a href="{{ url_for('unbook_session', session_id=session[0]) }}" class="btn btn-primary">Unbook</a>
-            </td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th>Trainer</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for session in sessions %} {% if session[0] in bookings %}
+    <tr>
+      <td>{{ session[1] }}</td>
+      <!-- Assuming trainer's name is in the second column -->
+      <td>{{ session[2] }}</td>
+      <!-- Date -->
+      <td>{{ session[3] }}</td>
+      <!-- Time -->
+      <td>{{ session[4] }}</td>
+      <!-- Duration -->
+      <td>
+        <a
+          href="{{ url_for('unbook_session', session_id=session[0]) }}"
+          class="btn btn-primary"
+          >Unbook</a
+        >
+      </td>
+    </tr>
+    {% endif %} {% endfor %}
+  </tbody>
 </table>
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}

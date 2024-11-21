@@ -1,278 +1,323 @@
 <!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="static/gnarpy.jpg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="static/gnarpy.jpg" />
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Import Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Custom CSS for navbar, footer, and background -->
     <style>
-        /* Default (light) mode */
-        body {
-            background-color: #dddeee;
-            color: #000;
-        }
+      /* Default (light) mode */
+      body {
+        background-color: #dddeee;
+        color: #000;
+      }
 
-        /* Dark mode */
-        body.dark-mode {
-            background-color: #1f1f1f;
-            color: #fff;
-        }
+      /* Dark mode */
+      body.dark-mode {
+        background-color: #1f1f1f;
+        color: #fff;
+      }
 
-        /* Additional styling for other elements in dark mode */
-        .navbar,
-        footer {
-            background-color: #434ccc;
-        }
+      /* Additional styling for other elements in dark mode */
+      .navbar,
+      footer {
+        background-color: #434ccc;
+      }
 
-        .navbar.dark-mode,
-        footer.dark-mode {
-            background-color: #1f25a5;
-        }
+      .navbar.dark-mode,
+      footer.dark-mode {
+        background-color: #1f25a5;
+      }
 
-        .modal-content.dark-mode {
-            background-color: #434ccc;
-            color: #fff;
-        }
+      .modal-content.dark-mode {
+        background-color: #434ccc;
+        color: #fff;
+      }
 
-        header {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100px;
-            padding: 10px;
-            width: 100%;
-            background-color: #1f25a5;
-            /* Dark blue for header */
-            display: flex;
-            align-items: center;
-            border-bottom: 5px rgba(255, 255, 255, 0.5) solid;
-        }
+      header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100px;
+        padding: 10px;
+        width: 100%;
+        background-color: #1f25a5;
+        /* Dark blue for header */
+        display: flex;
+        align-items: center;
+        border-bottom: 5px rgba(255, 255, 255, 0.5) solid;
+      }
 
-        main {
-            padding: 20px;
-            min-height: 90vh;
-        }
+      main {
+        padding: 20px;
+        min-height: 90vh;
+      }
 
-        footer {
-            position: relative;
-            bottom: 0;
-            background-color: #1f25a5;
-            /* Dark blue for footer */
-            padding: 20px;
-            text-align: center;
-            border-top: 5px rgba(255, 255, 255, 0.5) solid;
-            width: 100%;
-            color: #fff !important;
-        }
+      footer {
+        position: relative;
+        bottom: 0;
+        background-color: #1f25a5;
+        /* Dark blue for footer */
+        padding: 20px;
+        text-align: center;
+        border-top: 5px rgba(255, 255, 255, 0.5) solid;
+        width: 100%;
+        color: #fff !important;
+      }
 
-        footer p {
-            margin-bottom: 4px !important;
-        }
+      footer p {
+        margin-bottom: 4px !important;
+      }
 
-        .footer-links a {
-            margin: 0 10px;
-            color: #a6abf3;
-            /* Lighter blue accent for footer links */
-            text-decoration: none;
-        }
+      .footer-links a {
+        margin: 0 10px;
+        color: #a6abf3;
+        /* Lighter blue accent for footer links */
+        text-decoration: none;
+      }
 
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
 
-        .navbar {
-            background-color: #434ccc;
-            /* Light blue for navbar */
-        }
+      .navbar {
+        background-color: #434ccc;
+        /* Light blue for navbar */
+      }
 
-        .navbar-brand,
-        .nav-link {
-            color: white !important;
-            /* White text for the navbar links */
-        }
+      .navbar-brand,
+      .nav-link {
+        color: white !important;
+        /* White text for the navbar links */
+      }
 
-        .nav-link:hover {
-            color: #a6abf3 !important;
-            /* Lighter blue on hover for navbar links */
-        }
+      .nav-link:hover {
+        color: #a6abf3 !important;
+        /* Lighter blue on hover for navbar links */
+      }
 
-        .navbar-toggler {
-            border-color: #a6abf3;
-            /* Toggler button color */
-        }
+      .navbar-toggler {
+        border-color: #a6abf3;
+        /* Toggler button color */
+      }
 
-        .navbar-toggler-icon {
-            background-color: #a6abf3;
-            /* Toggler icon color */
-        }
+      .navbar-toggler-icon {
+        background-color: #a6abf3;
+        /* Toggler icon color */
+      }
 
-        a {
-            color: inherit;
-        }
+      a {
+        color: inherit;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- Header / Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src="/static/logo-but-its-white.png" alt="Gnarp Catalog" width="120" height="45">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sessions">Sessions</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="d-flex align-items-center">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    {% if name %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user">{{ name }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img
+            src="/static/logo-but-its-white.png"
+            alt="Gnarp Catalog"
+            width="120"
+            height="45"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sessions">Sessions</a>
+            </li>
+          </ul>
         </div>
+        <div class="d-flex align-items-center">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            {% if name %}
+            <li class="nav-item">
+              <a class="nav-link" href="/user">{{ name }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
     </nav>
 
     <!-- Main Content Area -->
     <main>
-        <!-- Display flash messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category, msg in messages %}
-        <div id="alert"
-            class="alert alert-dismissible fade show 
-               {% if category == 'danger' %} alert-danger 
-               {% elif category == 'success' %} alert-success 
-               {% elif category == 'warning' %} alert-warning
-               {% else %} alert-info {% endif %}"
-            style="position: fixed; top: 80px; right: 20px; width: 250px; z-index: 1050; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
-            {{ msg }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-   
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
+      <!-- Display flash messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, msg in messages %}
+      <div
+        id="alert"
+        class="alert alert-dismissible fade show {% if category == 'danger' %} alert-danger {% elif category == 'success' %} alert-success {% elif category == 'warning' %} alert-warning {% else %} alert-info {% endif %}"
+        style="
+          position: fixed;
+          top: 80px;
+          right: 20px;
+          width: 250px;
+          z-index: 1050;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        "
+      >
+        {{ msg }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+
+      {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
     </main>
 
     <!-- Footer -->
     {% if footer %}
     <footer>
-        <div class="container">
-            <div class="row">
-                <!-- Contact Us Column -->
-                <div class="col-md-4">
-                    <h5>Contact Us!</h5>
-                    <p>somethingsomething@fitness.com</p>
-                    <p>+44 6756 594958</p>
-                    <p><a href="https://facebook.com">Facebook</a></p>
-                    <p><a href="https://twitter.com">Twitter</a></p>
-                    <p><a href="https://instagram.com">Instagram</a></p>
-                    <p><a href="/contact">Send us a message!!</a></p>
+      <div class="container">
+        <div class="row">
+          <!-- Contact Us Column -->
+          <div class="col-md-4">
+            <h5>Contact Us!</h5>
+            <p>somethingsomething@fitness.com</p>
+            <p>+44 6756 594958</p>
+            <p><a href="https://facebook.com">Facebook</a></p>
+            <p><a href="https://twitter.com">Twitter</a></p>
+            <p><a href="https://instagram.com">Instagram</a></p>
+            <p><a href="/contact">Send us a message!!</a></p>
+          </div>
+
+          <!-- Company Column -->
+          <div class="col-md-4">
+            <h5>Company</h5>
+            <p><a href="/about">About Us!</a></p>
+            <p><a href="/login">Sign-in as staff</a></p>
+          </div>
+
+          <!-- Accessibility Column -->
+          <div class="col-md-4">
+            <h5>Accessibility</h5>
+            <!-- Text Size Modal Trigger -->
+            <p>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#textSizeModal"
+                >Text Size</a
+              >
+            </p>
+
+            <!-- Text Size Modal -->
+            <div
+              class="modal fade"
+              id="textSizeModal"
+              tabindex="-1"
+              aria-labelledby="textSizeModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="textSizeModalLabel">
+                      Adjust Text Size
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="textSizeSlider" class="form-label"
+                      >Text Size (%):</label
+                    >
+                    <input
+                      type="range"
+                      class="form-range"
+                      id="textSizeSlider"
+                      min="100"
+                      max="500"
+                      value="100"
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-dismiss="modal"
+                    >
+                      Apply
+                    </button>
+                  </div>
                 </div>
-
-                <!-- Company Column -->
-                <div class="col-md-4">
-                    <h5>Company</h5>
-                    <p><a href="/about">About Us!</a></p>
-                    <p><a href="/login">Sign-in as staff</a></p>
-                </div>
-
-                <!-- Accessibility Column -->
-                <div class="col-md-4">
-                    <h5>Accessibility</h5>
-                    <!-- Text Size Modal Trigger -->
-                    <p><a href="#" data-bs-toggle="modal" data-bs-target="#textSizeModal">Text Size</a></p>
-
-                    <!-- Text Size Modal -->
-                    <div class="modal fade" id="textSizeModal" tabindex="-1" aria-labelledby="textSizeModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="textSizeModalLabel">Adjust Text Size</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="textSizeSlider" class="form-label">Text Size (%):</label>
-                                    <input type="range" class="form-range" id="textSizeSlider" min="100" max="500"
-                                        value="100">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Apply</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script>
-                        // Handle text size changes with the slider
-                        const textSizeSlider = document.getElementById('textSizeSlider');
-                        textSizeSlider.addEventListener('input', function () {
-                            document.body.style.fontSize = textSizeSlider.value + '%';
-                        });
-                    </script>
-
-                    <!-- Dark Mode Toggle -->
-                    <p><a href="#" id="darkModeToggle">Dark Mode</a></p>
-
-                    <script>
-                        // Toggle dark mode
-                        const darkModeToggle = document.getElementById('darkModeToggle');
-                        darkModeToggle.addEventListener('click', function () {
-                            document.body.classList.toggle('dark-mode');
-                        });
-                    </script>
-                    <p><a href="/dark-mode">Dark Mode</a></p>
-                    <p><a href="/accessibility">Accessibility Page</a></p>
-                </div>
+              </div>
             </div>
+
+            <script>
+              // Handle text size changes with the slider
+              const textSizeSlider = document.getElementById("textSizeSlider");
+              textSizeSlider.addEventListener("input", function () {
+                document.body.style.fontSize = textSizeSlider.value + "%";
+              });
+            </script>
+
+            <!-- Dark Mode Toggle -->
+            <p><a href="#" id="darkModeToggle">Dark Mode</a></p>
+
+            <script>
+              // Toggle dark mode
+              const darkModeToggle = document.getElementById("darkModeToggle");
+              darkModeToggle.addEventListener("click", function () {
+                document.body.classList.toggle("dark-mode");
+              });
+            </script>
+            <p><a href="/dark-mode">Dark Mode</a></p>
+            <p><a href="/accessibility">Accessibility Page</a></p>
+          </div>
         </div>
+      </div>
     </footer>
     {%endif%}
-
-
-</body>
-
+  </body>
 </html>
