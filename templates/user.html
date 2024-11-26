@@ -1,8 +1,64 @@
-{% extends "base.html" %} {% block title %}User Profile{% endblock %} {% block
-content %}
+{% extends "base.html" %}
+{% block title %}User Profile{% endblock %}
 
-<h1>User Profile</h1>
-<p><strong>Name:</strong> {{ name }}</p>
-<p><strong>Email:</strong> {{ email }}</p>
+{% block content %}
+<div class="container mt-5">
+    <h2>User Profile</h2>
+    <form method="POST" action="/user">
+        <!-- Current Password -->
+        <div class="mb-3">
+            <label for="currentPassword" class="form-label">Current Password</label>
+            <input type="password" class="form-control w-50" id="currentPassword" name="current_password" required>
+        </div>
 
+        <!-- Update Username -->
+        <div class="mb-3">
+            <label for="newUsername" class="form-label">New Username</label>
+            <input type="text" class="form-control w-50" id="newUsername" name="new_username" placeholder="{{ name }}">
+        </div>
+
+        <!-- Update Email -->
+        <div class="mb-3">
+            <label for="newEmail" class="form-label">New Email</label>
+            <input type="email" class="form-control w-50" id="newEmail" name="new_email" placeholder="{{ email }}">
+        </div>
+
+        <!-- Update Password -->
+        <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input type="password" class="form-control w-50" id="newPassword" name="new_password">
+        </div>
+
+        <!-- Confirm New Password -->
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control w-50" id="confirmPassword" name="confirm_password">
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
+    </form>
+</div>
+
+<!-- Delete Account Confirmation Modal -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="/delete_account">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your account? This action is irreversible.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

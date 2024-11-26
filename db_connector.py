@@ -3,7 +3,7 @@ import sqlite3
 class database():
 
     def __init__(self):
-        # Define our database FlaskPracticeDB.db
+        # Define our database name
         self.DBname = 'toka_db.db'
 
     def connect(self):
@@ -12,11 +12,11 @@ class database():
         try:
             conn = sqlite3.connect(self.DBname)
         except Exception as e:
-            print(f"An error occured: {e}")
+            print(f"An error occurred: {e}")
         return conn
 
     def disconnect(self, conn):
-        # Closes our database
+        # Closes our database connection
         if conn:
             conn.close()
 
@@ -37,17 +37,14 @@ class database():
         """
         conn = self.connect()
         cur = conn.cursor()
-        # try:
-        #     cur.execute(command, params)F
-        #     conn.commit()  # Commit the changes
-        #     result = cur.fetchall()
-        # except Exception as e:
-        #     print(f"An error occurred: {e}")
-        #     conn.rollback()  # Rollback if any error occurs
-        # finally:
-        cur.execute(command, params)
-        conn.commit()
-        result = cur.fetchall()
-        
-        self.disconnect(conn)
+        try:
+            cur.execute(command, params)
+            conn.commit()  # Commit the changes
+            result = cur.fetchall()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            conn.rollback()  # Rollback if any error occurs
+            result = []
+        finally:
+            self.disconnect(conn)
         return result
