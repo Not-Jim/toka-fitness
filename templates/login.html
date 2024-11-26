@@ -1,6 +1,5 @@
 <!-- login.html -->
-{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
-%}
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content %}
 <style>
   form {
     min-width: 400px;
@@ -11,6 +10,7 @@
     transform: translate(-50%, -50%);
     font-size: 1.5rem;
   }
+
   h1 {
     position: absolute;
     left: 0%;
@@ -29,34 +29,16 @@
   <form method="POST" action="{{ url_for('login') }}">
     <div class="mb-3">
       <label for="username" class="form-label">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        id="username"
-        name="username"
-        required
-      />
+      <input type="text" class="form-control" id="username" name="username" required />
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        required
-      />
+      <input type="password" class="form-control" id="password" name="password" required />
     </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      style="background-color: #1f25a5; border-color: #1f25a5"
-    >
+    <button type="submit" class="btn btn-primary" style="background-color: #1f25a5; border-color: #1f25a5">
       Login
     </button>
-    <br /><a href="/register" style="font-size: medium"
-      >Need an account? Register here</a
-    >
+    <br /><a href="/register" style="font-size: medium">Need an account? Register here</a>
   </form>
 </div>
 {% if form.errors %}

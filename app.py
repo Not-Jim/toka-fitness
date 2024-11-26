@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from forms import RegisterForm, LoginForm
 from db_connector import database
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf import CSRFProtect
 import datetime
 
 # Initialize the database connection
@@ -12,8 +11,8 @@ app = Flask(__name__)
 # Secret key for session management
 app.secret_key = 'Aftonsparv'
 
-# Initialize CSRF protection
-csrf = CSRFProtect(app)
+# Remove CSRF protection initialization
+# csrf = CSRFProtect(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

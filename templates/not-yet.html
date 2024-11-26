@@ -1,44 +1,44 @@
 {% extends "base.html" %} {% block title %}This doesn't exist yet{% endblock %} {% block content %}
 
 <style>
-  .not-yet-container {
-    text-align: center;
-    padding: 50px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .not-yet-container {
+        text-align: center;
+        padding: 50px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-  .not-yet-container h2 {
-    color: #1f25a5;
-    margin-bottom: 20px;
-  }
+    .not-yet-container h2 {
+        color: #1f25a5;
+        margin-bottom: 20px;
+    }
 
-  .not-yet-container p {
-    color: #434ccc;
-    margin-bottom: 20px;
-  }
+    .not-yet-container p {
+        color: #434ccc;
+        margin-bottom: 20px;
+    }
 
-  .not-yet-container a {
-    color: #a6abf3;
-    text-decoration: none;
-  }
+    .not-yet-container a {
+        color: #a6abf3;
+        text-decoration: none;
+    }
 
-  .not-yet-container a:hover {
-    text-decoration: underline;
-  }
+    .not-yet-container a:hover {
+        text-decoration: underline;
+    }
 </style>
 
 <div class="container">
-  <div class="not-yet-container">
-    <h2>Oops, this isn't finished yet</h2>
-    <p>Sorry {{ name }}, but you aren't supposed to be here.</p>
-    <p>Why not head back <a href="/">home</a>?</p>
-  </div>
+    <div class="not-yet-container">
+        <h2>Oops, this isn't finished yet</h2>
+        <p>Sorry {{ name }}, but you aren't supposed to be here.</p>
+        <p>Why not head back <a href="/">home</a>?</p>
+    </div>
 </div>
 
 {% endblock %}
